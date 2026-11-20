@@ -25,11 +25,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    /* ============================================================
-       STYLE WEAR — NFC DIGITAL BRAND PROFILE
-       Single-file build. Designed & developed by NovExa Tech.
-       ============================================================ */
-
     :root{
       --ink:        #0A0A0A;
       --ink-soft:   #121212;
@@ -37,17 +32,12 @@
       --grey:       #8A8A85;
       --line:       rgba(244,242,237,0.10);
       --line-strong:rgba(244,242,237,0.24);
-
-      /* ⚠️ PROVISIONAL accent — must be approved / sampled from official logo */
-      --lime: #C6F135;
-
+      --lime:       #C6F135; /* ⚠️ PROVISIONAL */
       --font-display: "Sora", system-ui, sans-serif;
       --font-body:    "Manrope", system-ui, sans-serif;
-
       --radius:    16px;
       --radius-sm: 12px;
       --radius-photo: 20px;
-
       --pad:  clamp(1.25rem, 5vw, 2rem);
       --gap:  clamp(0.75rem, 2.5vw, 1rem);
     }
@@ -64,7 +54,6 @@
       line-height:1.5;
       -webkit-font-smoothing:antialiased;
       overflow-x:hidden;
-
       display:flex;
       align-items:flex-start;
       justify-content:center;
@@ -77,182 +66,99 @@
     a{ color:inherit; text-decoration:none; }
     img{ display:block; max-width:100%; height:auto; }
     ul,dl,dd,dt{ margin:0; padding:0; list-style:none; }
+    :focus-visible{ outline:2px solid var(--lime); outline-offset:3px; border-radius:4px; }
 
-    :focus-visible{
-      outline:2px solid var(--lime);
-      outline-offset:3px;
-      border-radius:4px;
-    }
-
-    /* ============================================================
-       PROFILE
-       ============================================================ */
     .profile{
-      width:100%;
-      max-width:480px;
-      display:flex;
-      flex-direction:column;
+      width:100%; max-width:480px;
+      display:flex; flex-direction:column;
       gap:clamp(1.25rem, 4.5vw, 1.75rem);
-      position:relative;
-      z-index:10;
+      position:relative; z-index:10;
     }
 
-    /* ============================================================
-       BRAND
-       ============================================================ */
-    .brand{
-      text-align:center;
-      padding-top:clamp(0.5rem, 2vw, 1rem);
-    }
+    /* BRAND */
+    .brand{ text-align:center; padding-top:clamp(0.5rem, 2vw, 1rem); }
     .brand__mark{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      min-height:64px;
-      margin-bottom:1.25rem;
-      position:relative;
+      display:flex; justify-content:center; align-items:center;
+      min-height:64px; margin-bottom:1.25rem; position:relative;
     }
     .brand__mark img{
-      height:clamp(48px, 14vw, 62px);
-      width:auto;
-      object-fit:contain;
+      height:clamp(48px, 14vw, 62px); width:auto; object-fit:contain;
     }
     .brand__mark.is-missing::after{
-      content:"STYLE WEAR";
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-family:var(--font-display);
-      font-weight:700;
-      font-size:0.9rem;
-      letter-spacing:0.4em;
+      content:"STYLE WEAR"; position:absolute; inset:0;
+      display:flex; align-items:center; justify-content:center;
+      font-family:var(--font-display); font-weight:700;
+      font-size:0.9rem; letter-spacing:0.4em;
       color:var(--lime);
       border:1px dashed rgba(198,241,53,0.5);
-      border-radius:8px;
-      padding:0 1rem;
+      border-radius:8px; padding:0 1rem;
     }
-    .brand__mark.is-missing img{
-      opacity:0;
-      visibility:hidden;
-    }
-
+    .brand__mark.is-missing img{ opacity:0; visibility:hidden; }
     .brand__location{
-      margin:0 0 0.5rem;
-      font-size:0.7rem;
-      letter-spacing:0.32em;
-      text-transform:uppercase;
-      color:var(--lime);
+      margin:0 0 0.5rem; font-size:0.7rem;
+      letter-spacing:0.32em; text-transform:uppercase; color:var(--lime);
     }
     .brand__name{
-      margin:0 0 0.5rem;
-      font-family:var(--font-display);
-      font-weight:700;
-      font-size:clamp(1.6rem, 6.4vw, 2.1rem);
-      letter-spacing:0.28em;
-      padding-left:0.28em;
+      margin:0 0 0.5rem; font-family:var(--font-display);
+      font-weight:700; font-size:clamp(1.6rem, 6.4vw, 2.1rem);
+      letter-spacing:0.28em; padding-left:0.28em;
     }
     .brand__tagline{
-      margin:0 auto;
-      font-size:0.85rem;
-      color:var(--grey);
-      letter-spacing:0.02em;
-      max-width:32ch;
+      margin:0 auto; font-size:0.85rem; color:var(--grey);
+      letter-spacing:0.02em; max-width:32ch;
     }
 
-    /* ============================================================
-       BRAND PHOTO CAROUSEL
-       ============================================================ */
+    /* CAROUSEL */
     .brand-photo{
-      position:relative;
-      width:100%;
-      aspect-ratio: 4 / 5;
-      border-radius: var(--radius-photo);
-      overflow:hidden;
+      position:relative; width:100%; aspect-ratio: 4 / 5;
+      border-radius: var(--radius-photo); overflow:hidden;
       background: var(--ink-soft);
-      border: 2px solid var(--line-strong);
-      margin:0;
+      border: 2px solid var(--line-strong); margin:0;
       box-shadow:
         0 1px 0 rgba(255,255,255,0.03) inset,
         0 20px 40px -20px rgba(0,0,0,0.6);
     }
-
     .brand-photo__track{ position:absolute; inset:0; }
-
     .brand-photo__slide{
-      position:absolute;
-      inset:0;
-      opacity:0;
+      position:absolute; inset:0; opacity:0;
       transform: scale(1.02);
       transition: opacity 900ms ease, transform 1200ms ease;
       pointer-events:none;
     }
-    .brand-photo__slide.is-active{
-      opacity:1;
-      transform: scale(1);
-      pointer-events:auto;
-    }
-
+    .brand-photo__slide.is-active{ opacity:1; transform: scale(1); pointer-events:auto; }
     .brand-photo__slide img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center center;
-      display:block;
+      width:100%; height:100%; object-fit:cover;
+      object-position:center center; display:block;
     }
-
     .brand-photo__slide.is-missing img{ display:none; }
     .brand-photo__slide .brand-photo__fallback{
-      position:absolute;
-      inset:0;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      flex-direction:column;
-      gap:0.55rem;
+      position:absolute; inset:0; display:none;
+      align-items:center; justify-content:center;
+      flex-direction:column; gap:0.55rem;
       background: linear-gradient(135deg, #0d0d0d 0%, #181818 100%);
-      color:var(--grey);
-      text-align:center;
-      padding:1.5rem;
+      color:var(--grey); text-align:center; padding:1.5rem;
     }
     .brand-photo__slide.is-missing .brand-photo__fallback{ display:flex; }
-
     .brand-photo__fallback::before{
-      content:"";
-      position:absolute;
-      left:1.5rem; right:1.5rem;
-      bottom:1.75rem;
-      height:1px;
-      background:var(--lime);
-      opacity:0.6;
+      content:""; position:absolute;
+      left:1.5rem; right:1.5rem; bottom:1.75rem;
+      height:1px; background:var(--lime); opacity:0.6;
     }
     .brand-photo__fallback span{
-      font-family:var(--font-display);
-      font-weight:700;
-      font-size:0.95rem;
-      letter-spacing:0.4em;
-      text-transform:uppercase;
-      color:var(--paper);
+      font-family:var(--font-display); font-weight:700;
+      font-size:0.95rem; letter-spacing:0.4em;
+      text-transform:uppercase; color:var(--paper);
     }
     .brand-photo__fallback small{
-      font-size:0.65rem;
-      letter-spacing:0.32em;
-      text-transform:uppercase;
-      color:var(--grey);
-      opacity:0.75;
+      font-size:0.65rem; letter-spacing:0.32em;
+      text-transform:uppercase; color:var(--grey); opacity:0.75;
     }
 
-    /* ============================================================
-       DOT INDICATORS
-       ============================================================ */
+    /* DOTS */
     .brand-photo__dots{
-      position:absolute;
-      bottom:1.1rem;
-      left:50%;
+      position:absolute; bottom:1.1rem; left:50%;
       transform:translateX(-50%);
-      display:flex;
-      gap:0.55rem;
+      display:flex; gap:0.55rem;
       padding:0.5rem 0.85rem;
       background:rgba(10,10,10,0.6);
       border-radius:999px;
@@ -262,11 +168,8 @@
       z-index:2;
     }
     .brand-photo__dot{
-      width:9px;
-      height:9px;
-      padding:0;
-      border:none;
-      border-radius:50%;
+      width:9px; height:9px; padding:0;
+      border:none; border-radius:50%;
       background:rgba(244,242,237,0.35);
       cursor:pointer;
       transition: background .3s ease, transform .3s ease, box-shadow .3s ease;
@@ -274,98 +177,57 @@
     }
     .brand-photo__dot:hover{ background:rgba(244,242,237,0.65); }
     .brand-photo__dot.is-active{
-      background:var(--lime);
-      transform:scale(1.4);
+      background:var(--lime); transform:scale(1.4);
       box-shadow:0 0 0 3px rgba(198,241,53,0.25);
     }
-    .brand-photo__dot:focus-visible{
-      outline:2px solid var(--lime);
-      outline-offset:3px;
-    }
+    .brand-photo__dot:focus-visible{ outline:2px solid var(--lime); outline-offset:3px; }
 
-    /* ============================================================
-       EYEBROW
-       ============================================================ */
     .eyebrow{
-      font-size:0.65rem;
-      letter-spacing:0.24em;
-      text-transform:uppercase;
-      color:var(--grey);
-      margin:0 0 0.75rem;
-      padding-left:0.2em;
+      font-size:0.65rem; letter-spacing:0.24em;
+      text-transform:uppercase; color:var(--grey);
+      margin:0 0 0.75rem; padding-left:0.2em;
     }
 
-    /* ============================================================
-       PRIMARY ACTIONS
-       ============================================================ */
-    .primary{
-      display:flex;
-      flex-direction:column;
-      gap:var(--gap);
-    }
-
+    /* PRIMARY */
+    .primary{ display:flex; flex-direction:column; gap:var(--gap); }
     .primary__hero{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:1rem;
-      padding:1.35rem 1.5rem;
-      background:var(--lime);
-      color:var(--ink);
+      display:flex; align-items:center; justify-content:space-between;
+      gap:1rem; padding:1.35rem 1.5rem;
+      background:var(--lime); color:var(--ink);
       border-radius:var(--radius);
       transition: filter .2s ease, transform .15s ease;
       -webkit-tap-highlight-color:transparent;
     }
     .primary__hero:hover{ filter:brightness(1.04); }
     .primary__hero:active{ transform:scale(0.99); }
-
-    .primary__hero-body{
-      display:flex;
-      flex-direction:column;
-      min-width:0;
-    }
+    .primary__hero-body{ display:flex; flex-direction:column; min-width:0; }
     .primary__eyebrow{
-      font-size:0.68rem;
-      letter-spacing:0.22em;
-      text-transform:uppercase;
-      font-weight:600;
-      opacity:0.72;
-      margin-bottom:0.2rem;
+      font-size:0.68rem; letter-spacing:0.22em;
+      text-transform:uppercase; font-weight:600;
+      opacity:0.72; margin-bottom:0.2rem;
     }
     .primary__hero-title{
-      font-family:var(--font-display);
-      font-weight:700;
+      font-family:var(--font-display); font-weight:700;
       font-size:clamp(1.15rem, 4.6vw, 1.35rem);
       letter-spacing:0.01em;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
+      overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
     }
     .primary__hero-arrow{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:44px;
-      height:44px;
-      flex:0 0 44px;
-      border-radius:50%;
-      background:rgba(10,10,10,0.12);
+      display:inline-flex; align-items:center; justify-content:center;
+      width:44px; height:44px; flex:0 0 44px;
+      border-radius:50%; background:rgba(10,10,10,0.12);
       transition: transform .2s ease;
     }
     .primary__hero:hover .primary__hero-arrow{ transform:rotate(-4deg); }
 
     .primary__grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      grid-template-rows:auto auto;
-      gap:var(--gap);
+      display:grid; grid-template-columns:1fr 1fr;
+      grid-template-rows:auto auto; gap:var(--gap);
     }
     .primary__grid .tile--tall{ grid-row:1 / span 2; }
 
     .tile{
-      display:flex;
-      align-items:center;
-      gap:0.85rem;
+      display:flex; align-items:center; gap:0.85rem;
       padding:1.05rem 1.1rem;
       background:var(--ink-soft);
       border:1px solid var(--line);
@@ -374,216 +236,132 @@
       -webkit-tap-highlight-color:transparent;
       min-height:60px;
     }
-    .tile:hover{
-      border-color:var(--line-strong);
-      background:#161616;
-    }
+    .tile:hover{ border-color:var(--line-strong); background:#161616; }
     .tile:active{ transform:scale(0.99); }
-
     .tile__icon{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:38px;
-      height:38px;
-      flex:0 0 38px;
+      display:inline-flex; align-items:center; justify-content:center;
+      width:38px; height:38px; flex:0 0 38px;
       border-radius:10px;
       background:rgba(244,242,237,0.05);
       color:var(--paper);
       transition: color .2s ease;
     }
     .tile:hover .tile__icon{ color:var(--lime); }
-
-    .tile__body{
-      display:flex;
-      flex-direction:column;
-      min-width:0;
-    }
-    .tile__label{
-      font-size:0.92rem;
-      font-weight:600;
-      letter-spacing:0.01em;
-    }
+    .tile__body{ display:flex; flex-direction:column; min-width:0; }
+    .tile__label{ font-size:0.92rem; font-weight:600; letter-spacing:0.01em; }
     .tile__meta{
-      font-size:0.72rem;
-      color:var(--grey);
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
+      font-size:0.72rem; color:var(--grey);
+      overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
     }
-
     .tile--tall{
-      flex-direction:column;
-      align-items:flex-start;
-      justify-content:space-between;
-      padding:1.15rem;
+      flex-direction:column; align-items:flex-start;
+      justify-content:space-between; padding:1.15rem;
     }
     .tile--tall .tile__icon{
-      width:42px;
-      height:42px;
-      flex-basis:42px;
-      margin-bottom:1.25rem;
+      width:42px; height:42px; flex-basis:42px; margin-bottom:1.25rem;
     }
 
-    /* ============================================================
-       SOCIALS
-       ============================================================ */
-    .socials__row{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:var(--gap);
-    }
+    /* SOCIALS */
+    .socials__row{ display:grid; grid-template-columns:1fr 1fr; gap:var(--gap); }
     .social{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:0.55rem;
-      min-height:50px;
-      padding:0.75rem 1rem;
+      display:flex; align-items:center; justify-content:center;
+      gap:0.55rem; min-height:50px; padding:0.75rem 1rem;
       background:transparent;
       border:1px solid var(--line);
       border-radius:var(--radius-sm);
-      font-size:0.8rem;
-      font-weight:600;
-      letter-spacing:0.06em;
-      text-transform:uppercase;
+      font-size:0.8rem; font-weight:600;
+      letter-spacing:0.06em; text-transform:uppercase;
       color:var(--paper);
       transition: border-color .2s ease, color .2s ease, background .2s ease, transform .15s ease;
       -webkit-tap-highlight-color:transparent;
     }
-    .social:hover{
-      border-color:var(--lime);
-      color:var(--lime);
-    }
+    .social:hover{ border-color:var(--lime); color:var(--lime); }
     .social:active{ transform:scale(0.99); }
-
     .social__icon{ display:inline-flex; color:currentColor; }
     .social__label{ line-height:1; }
 
-    /* ============================================================
-       SAVE CONTACT
-       ============================================================ */
+    /* SAVE */
     .save__btn{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:0.6rem;
-      width:100%;
-      min-height:56px;
+      display:flex; align-items:center; justify-content:center;
+      gap:0.6rem; width:100%; min-height:56px;
       padding:0.9rem 1.25rem;
       background:transparent;
       border:1px solid var(--line-strong);
       border-radius:var(--radius);
-      font-size:0.85rem;
-      font-weight:600;
-      letter-spacing:0.08em;
-      text-transform:uppercase;
+      font-size:0.85rem; font-weight:600;
+      letter-spacing:0.08em; text-transform:uppercase;
       transition: border-color .2s ease, color .2s ease, background .2s ease, transform .15s ease;
       -webkit-tap-highlight-color:transparent;
     }
-    .save__btn:hover{
-      border-color:var(--lime);
-      color:var(--lime);
-    }
+    .save__btn:hover{ border-color:var(--lime); color:var(--lime); }
     .save__btn:active{ transform:scale(0.99); }
     .save__icon{ display:inline-flex; }
 
-    /* ============================================================
-       BUSINESS INFO
-       ============================================================ */
+    /* BIZ */
     .biz{
-      text-align:center;
-      padding:1.1rem 1.2rem;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
+      text-align:center; padding:1.1rem 1.2rem;
+      border:1px solid var(--line); border-radius:var(--radius);
     }
     .biz__label{
-      font-size:0.62rem;
-      letter-spacing:0.26em;
-      text-transform:uppercase;
-      color:var(--grey);
+      font-size:0.62rem; letter-spacing:0.26em;
+      text-transform:uppercase; color:var(--grey);
       margin:0 0 0.4rem;
     }
     .biz__address{
-      font-size:0.88rem;
-      line-height:1.55;
-      color:var(--paper);
-      font-style:normal;
+      font-size:0.88rem; line-height:1.55;
+      color:var(--paper); font-style:normal;
     }
 
-    /* ============================================================
-       CREDIT
-       ============================================================ */
+    /* CREDIT */
     .credit{
-      text-align:center;
-      font-size:0.66rem;
-      letter-spacing:0.16em;
-      color:var(--grey);
+      text-align:center; font-size:0.66rem;
+      letter-spacing:0.16em; color:var(--grey);
       margin:0.25rem 0 0;
     }
     .credit a{ color:var(--lime); }
     .credit a:hover{ text-decoration:underline; text-underline-offset:3px; }
 
-    /* ============================================================
-       EMAIL FALLBACK TOAST
-       ============================================================ */
+    /* TOAST */
     .sw-toast{
-      position:fixed;
-      left:50%;
+      position:fixed; left:50%;
       bottom:max(env(safe-area-inset-bottom), 1rem);
       transform:translateX(-50%) translateY(20px);
-      display:flex;
-      align-items:center;
-      gap:0.6rem;
+      display:flex; align-items:center; gap:0.6rem;
       padding:0.75rem 0.9rem;
       background:var(--ink-soft);
       border:1px solid var(--line-strong);
       border-radius:999px;
-      color:var(--paper);
-      font-size:0.82rem;
-      z-index:9999;
-      opacity:0;
-      pointer-events:none;
+      color:var(--paper); font-size:0.82rem;
+      z-index:9999; opacity:0; pointer-events:none;
       transition: opacity .3s ease, transform .3s ease;
       box-shadow:0 10px 30px -10px rgba(0,0,0,0.6);
       max-width:calc(100% - 2rem);
     }
     .sw-toast.is-visible{
-      opacity:1;
-      transform:translateX(-50%) translateY(0);
+      opacity:1; transform:translateX(-50%) translateY(0);
       pointer-events:auto;
     }
     .sw-toast__text strong{ color:var(--lime); font-weight:600; }
     .sw-toast__btn{
       border:1px solid var(--line-strong);
-      background:transparent;
-      color:var(--lime);
-      font:inherit;
-      font-size:0.72rem;
-      letter-spacing:0.06em;
-      text-transform:uppercase;
-      font-weight:600;
-      padding:0.35rem 0.7rem;
-      border-radius:999px;
-      cursor:pointer;
+      background:transparent; color:var(--lime);
+      font:inherit; font-size:0.72rem;
+      letter-spacing:0.06em; text-transform:uppercase;
+      font-weight:600; padding:0.35rem 0.7rem;
+      border-radius:999px; cursor:pointer;
       -webkit-tap-highlight-color:transparent;
     }
     .sw-toast__btn:hover{ background:rgba(198,241,53,0.1); }
     .sw-toast__close{
-      background:transparent;
-      border:none;
-      color:var(--grey);
-      font-size:1.2rem;
-      line-height:1;
-      padding:0 0.25rem;
+      background:transparent; border:none;
+      color:var(--grey); font-size:1.2rem;
+      line-height:1; padding:0 0.25rem;
       cursor:pointer;
       -webkit-tap-highlight-color:transparent;
     }
     .sw-toast__close:hover{ color:var(--paper); }
 
-    /* ============================================================
-       RESPONSIVE
-       ============================================================ */
+    /* RESPONSIVE */
     @media (max-width:359px){
       :root{ --pad: 1rem; }
       .brand__name{ letter-spacing:0.22em; padding-left:0.22em; }
@@ -594,27 +372,15 @@
       .brand-photo__dots{ bottom:0.85rem; padding:0.4rem 0.7rem; gap:0.45rem; }
       .brand-photo__dot{ width:8px; height:8px; }
     }
-
     @media (min-width:640px){
-      body{
-        align-items:center;
-        padding-block:2rem;
-      }
+      body{ align-items:center; padding-block:2rem; }
       .profile{ max-width:520px; }
     }
-
     @media (min-width:1024px){
       body{ padding-block:3rem; }
-      .profile{
-        max-width:560px;
-        gap:1.75rem;
-      }
+      .profile{ max-width:560px; gap:1.75rem; }
       .brand__mark img{ height:64px; }
     }
-
-    /* ============================================================
-       REDUCED MOTION
-       ============================================================ */
     @media (prefers-reduced-motion: reduce){
       *, *::before, *::after{
         transition-duration: 0.001ms !important;
@@ -630,14 +396,10 @@
 
   <main class="profile" role="main">
 
-    <!-- ============ A. BRAND IDENTITY ============ -->
     <header class="brand">
       <div class="brand__mark" id="brandMark">
-        <img id="brandLogo"
-             src="assets/logo/logo.png"
-             alt="Style Wear logo"
-             width="240" height="64"
-             decoding="async" />
+        <img id="brandLogo" src="assets/logo/logo.png" alt="Style Wear logo"
+             width="240" height="64" decoding="async" />
       </div>
       <p class="brand__location" id="brandLocation">Houston · Texas</p>
       <h1 class="brand__name" id="brandName">STYLE WEAR</h1>
@@ -646,19 +408,15 @@
       </p>
     </header>
 
-    <!-- ============ B. BRAND PHOTO CAROUSEL ============ -->
     <figure class="brand-photo" id="brandPhoto" aria-roledescription="carousel" aria-label="Style Wear editorial photographs">
       <div class="brand-photo__track" id="brandPhotoTrack"></div>
       <div class="brand-photo__dots" id="brandPhotoDots" role="tablist" aria-label="Photo slides"></div>
     </figure>
 
-    <!-- ============ C. MAIN WEBSITE ACTION ============ -->
     <section class="primary" aria-label="Primary actions">
 
-      <a class="primary__hero"
-         id="websiteLink"
-         href="https://stylewear.us/"
-         target="_blank" rel="noopener noreferrer"
+      <a class="primary__hero" id="websiteLink"
+         href="https://stylewear.us/" target="_blank" rel="noopener noreferrer"
          aria-label="Visit the official Style Wear website">
         <span class="primary__hero-body">
           <span class="primary__eyebrow">Official Website</span>
@@ -668,19 +426,15 @@
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none"
                stroke="currentColor" stroke-width="1.7"
                stroke-linecap="round" stroke-linejoin="round">
-            <path d="M7 17L17 7"/>
-            <path d="M8 7h9v9"/>
+            <path d="M7 17L17 7"/><path d="M8 7h9v9"/>
           </svg>
         </span>
       </a>
 
-      <!-- D. CONTACT GRID -->
       <div class="primary__grid">
 
-        <a class="tile tile--tall"
-           id="phoneLink"
-           href="tel:+18326777316"
-           aria-label="Call Style Wear">
+        <a class="tile tile--tall" id="phoneLink"
+           href="tel:+18326777316" aria-label="Call Style Wear">
           <span class="tile__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none"
                  stroke="currentColor" stroke-width="1.7"
@@ -694,10 +448,9 @@
           </span>
         </a>
 
-        <a class="tile"
-           id="emailLink"
+        <a class="tile" id="emailLink"
            href="mailto:info@stylewear.us"
-           aria-label="Email Style Wear">
+           aria-label="Compose an email to Style Wear">
           <span class="tile__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
                  stroke="currentColor" stroke-width="1.7"
@@ -712,8 +465,7 @@
           </span>
         </a>
 
-        <a class="tile"
-           id="mapLink"
+        <a class="tile" id="mapLink"
            href="https://www.google.com/maps/search/?api=1&query=9945+Harwin+Dr+STE+C+Houston+TX+77036"
            target="_blank" rel="noopener noreferrer"
            aria-label="Get directions to Style Wear">
@@ -734,13 +486,10 @@
       </div>
     </section>
 
-    <!-- ============ E. SOCIALS ============ -->
     <section class="socials" aria-label="Social media">
       <p class="eyebrow">Follow</p>
       <div class="socials__row">
-
-        <a class="social"
-           id="instagramLink"
+        <a class="social" id="instagramLink"
            href="https://www.instagram.com/stylewear.us/"
            target="_blank" rel="noopener noreferrer"
            aria-label="Follow Style Wear on Instagram">
@@ -756,8 +505,7 @@
           <span class="social__label">Instagram</span>
         </a>
 
-        <a class="social"
-           id="facebookLink"
+        <a class="social" id="facebookLink"
            href="https://www.facebook.com/styleweartee/"
            target="_blank" rel="noopener noreferrer"
            aria-label="Connect with Style Wear on Facebook">
@@ -770,27 +518,22 @@
           </span>
           <span class="social__label">Facebook</span>
         </a>
-
       </div>
     </section>
 
-    <!-- ============ F. SAVE CONTACT ============ -->
     <section aria-label="Save contact">
       <a class="save__btn" id="vcardLink" href="style-wear.vcf" download>
         <span class="save__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
                stroke="currentColor" stroke-width="1.7"
                stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 3v12"/>
-            <path d="M7 10l5 5 5-5"/>
-            <path d="M5 21h14"/>
+            <path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/>
           </svg>
         </span>
         <span class="save__label">Save Contact</span>
       </a>
     </section>
 
-    <!-- ============ G. BUSINESS LOCATION ============ -->
     <section class="biz" aria-label="Business location">
       <p class="biz__label">Flagship Location</p>
       <address class="biz__address" id="bizAddress">
@@ -799,7 +542,6 @@
       </address>
     </section>
 
-    <!-- ============ H. ATTRIBUTION ============ -->
     <footer class="credit">
       Digital profile by
       <a href="https://novexatech.10001mb.com/?i=1" target="_blank" rel="noopener noreferrer">NovExa Tech</a>
@@ -808,9 +550,6 @@
   </main>
 
   <script>
-    /* ============================================================
-       STYLE WEAR — INLINE APPLICATION
-       ============================================================ */
     (function () {
       "use strict";
 
@@ -822,7 +561,6 @@
           logo:     "assets/logo/logo.png",
           lime:     "#C6F135"
         },
-
         photos: [
           "assets/images/1.jpg",
           "assets/images/2.jpg",
@@ -830,7 +568,6 @@
           "assets/images/4.jpg",
           "assets/images/5.png"
         ],
-
         website:   "https://stylewear.us/",
         instagram: "https://www.instagram.com/stylewear.us/",
         facebook:  "https://www.facebook.com/styleweartee/",
@@ -845,12 +582,10 @@
 
       const $ = (id) => document.getElementById(id);
 
-      /* Accent */
       if (CFG.brand.lime) {
         document.documentElement.style.setProperty("--lime", CFG.brand.lime);
       }
 
-      /* Brand */
       const brandLogo = $("brandLogo");
       const brandMark = $("brandMark");
       if (brandLogo && CFG.brand.logo) {
@@ -863,7 +598,7 @@
       if ($("brandName")     && CFG.brand.name)     $("brandName").textContent     = CFG.brand.name;
       if ($("brandTagline")  && CFG.brand.tagline)  $("brandTagline").textContent  = CFG.brand.tagline;
 
-      /* ---------- Email fallback toast ---------- */
+      /* -------- Email fallback toast -------- */
       function showEmailToast(email) {
         let toast = document.getElementById("sw-email-toast");
         if (toast) { toast.classList.add("is-visible"); return; }
@@ -880,18 +615,15 @@
           <button type="button" class="sw-toast__close" aria-label="Dismiss">&times;</button>
         `;
         document.body.appendChild(toast);
-
         void toast.offsetWidth;
         toast.classList.add("is-visible");
 
-        const closeBtn = toast.querySelector(".sw-toast__close");
-        const copyBtn  = toast.querySelector(".sw-toast__btn");
-
-        closeBtn.addEventListener("click", () => {
+        toast.querySelector(".sw-toast__close").addEventListener("click", () => {
           toast.classList.remove("is-visible");
           setTimeout(() => toast.remove(), 400);
         });
 
+        const copyBtn = toast.querySelector(".sw-toast__btn");
         copyBtn.addEventListener("click", () => {
           const text = copyBtn.dataset.copy || "";
           if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -917,9 +649,7 @@
         }, 6000);
       }
 
-      /* ============================================================
-         CAROUSEL
-         ============================================================ */
+      /* -------- Carousel -------- */
       const carousel = $("brandPhoto");
       const track    = $("brandPhotoTrack");
       const dotsWrap = $("brandPhotoDots");
@@ -945,8 +675,7 @@
           const img = document.createElement("img");
           img.src = src;
           img.alt = `Style Wear editorial photograph ${i + 1}`;
-          img.width = 1600;
-          img.height = 2000;
+          img.width = 1600; img.height = 2000;
           img.decoding = "async";
           img.loading = i === 0 ? "eager" : "lazy";
           if (i === 1) img.fetchPriority = "high";
@@ -973,10 +702,7 @@
           dot.setAttribute("aria-label", `Go to photograph ${i + 1}`);
           dot.setAttribute("aria-selected", i === 0 ? "true" : "false");
           dot.dataset.index = String(i);
-          dot.addEventListener("click", () => {
-            goTo(i);
-            restartAuto();
-          });
+          dot.addEventListener("click", () => { goTo(i); restartAuto(); });
           dotsWrap.appendChild(dot);
         });
 
@@ -986,44 +712,30 @@
         function goTo(index) {
           let nextIdx = ((index % total) + total) % total;
           if (nextIdx === currentIndex) return;
-
           slides[currentIndex].classList.remove("is-active");
           dots[currentIndex].classList.remove("is-active");
           dots[currentIndex].setAttribute("aria-selected", "false");
-
           currentIndex = nextIdx;
-
           slides[currentIndex].classList.add("is-active");
           dots[currentIndex].classList.add("is-active");
           dots[currentIndex].setAttribute("aria-selected", "true");
         }
-
         function next() { goTo(currentIndex + 1); }
-
         function startAuto() {
           if (prefersReducedMotion) return;
           stopAuto();
           carouselTimer = setInterval(next, 5000);
         }
         function stopAuto() {
-          if (carouselTimer) {
-            clearInterval(carouselTimer);
-            carouselTimer = null;
-          }
+          if (carouselTimer) { clearInterval(carouselTimer); carouselTimer = null; }
         }
-        function restartAuto() {
-          stopAuto();
-          startAuto();
-        }
+        function restartAuto() { stopAuto(); startAuto(); }
 
         carousel.addEventListener("mouseenter", stopAuto);
         carousel.addEventListener("mouseleave", startAuto);
-
         document.addEventListener("visibilitychange", () => {
-          if (document.hidden) stopAuto();
-          else startAuto();
+          if (document.hidden) stopAuto(); else startAuto();
         });
-
         carousel.addEventListener("touchstart", stopAuto, { passive: true });
         carousel.addEventListener("touchend", () => {
           setTimeout(startAuto, 8000);
@@ -1043,15 +755,12 @@
             if (carouselTimer) return;
             if (carousel.matches(":hover")) return;
             const now = Date.now();
-            if (now - lastSwitch >= 5000) {
-              next();
-              lastSwitch = now;
-            }
+            if (now - lastSwitch >= 5000) { next(); lastSwitch = now; }
           }, 1000);
         }
       }
 
-      /* ---------- Links ---------- */
+      /* -------- Links -------- */
       const setHref = (id, href) => {
         const el = $(id);
         if (el && href) el.href = href;
@@ -1069,26 +778,70 @@
         if (meta && CFG.phone) meta.textContent = CFG.phone;
       }
 
-      /* ---------- Email: guaranteed open + fallback toast ---------- */
+      /* ============================================================
+         EMAIL — device-aware behaviour
+         ------------------------------------------------------------
+         • Mobile (iOS / Android): use native mailto: → opens the
+           user's default mail app (Gmail, Apple Mail, Outlook).
+
+         • Desktop (Windows / macOS / Linux): mailto: often does
+           NOTHING if no desktop mail client is configured, so we
+           open Gmail's web compose URL in a new tab instead.
+           This works in every browser that has a Gmail session.
+         ============================================================ */
       if (CFG.email) {
         const emailEl = $("emailLink");
         if (emailEl) {
-          emailEl.href = "mailto:" + CFG.email;
+          const subject = encodeURIComponent("Inquiry — Style Wear");
+          const body    = encodeURIComponent(
+            "Hi Style Wear team,\n\nI'd like to get in touch about:\n\n"
+          );
+
+          // Detection: mobile vs desktop
+          const isMobile = /Android|iPhone|iPad|iPod|Mobile|IEMobile|Opera Mini/i
+                           .test(navigator.userAgent);
+
+          if (isMobile) {
+            // MOBILE — native mailto opens the system mail composer
+            emailEl.href = "mailto:" + CFG.email +
+                           "?subject=" + subject +
+                           "&body=" + body;
+            // Keep default anchor behavior (no preventDefault)
+          } else {
+            // DESKTOP — open Gmail web compose in a new tab
+            emailEl.href = "https://mail.google.com/mail/?view=cm&fs=1" +
+                           "&to=" + encodeURIComponent(CFG.email) +
+                           "&su=" + subject +
+                           "&body=" + body;
+            emailEl.target = "_blank";
+            emailEl.rel = "noopener noreferrer";
+          }
+
           const meta = $("emailMeta");
           if (meta) meta.textContent = CFG.email;
 
-          emailEl.addEventListener("click", (e) => {
-            e.preventDefault();
-            const mailto = "mailto:" + CFG.email;
-            try {
-              window.location.href = mailto;
-            } catch (_) { /* ignore */ }
-            setTimeout(() => { showEmailToast(CFG.email); }, 400);
+          // Show copy fallback only if the browser blocks the action
+          emailEl.addEventListener("click", () => {
+            // If the click was blocked (popup blocker on desktop),
+            // offer the copy toast so the user still has the email.
+            let opened = false;
+            const checkOpen = () => {
+              // On desktop, new tab steals focus → window blurs
+              if (document.hidden) opened = true;
+            };
+            document.addEventListener("visibilitychange", checkOpen, { once: true });
+
+            setTimeout(() => {
+              document.removeEventListener("visibilitychange", checkOpen);
+              if (!isMobile && !opened && !document.hidden) {
+                showEmailToast(CFG.email);
+              }
+            }, 1200);
           });
         }
       }
 
-      /* ---------- Address ---------- */
+      /* -------- Address -------- */
       const bizAddr = $("bizAddress");
       if (bizAddr && CFG.addressLine1 && CFG.addressLine2) {
         while (bizAddr.firstChild) bizAddr.removeChild(bizAddr.firstChild);
@@ -1097,7 +850,7 @@
         bizAddr.appendChild(document.createTextNode(CFG.addressLine2));
       }
 
-      /* ---------- Press feedback ---------- */
+      /* -------- Press feedback -------- */
       document.querySelectorAll(".primary__hero, .tile, .social, .save__btn")
         .forEach((el) => {
           el.addEventListener("pointerdown", () => { el.dataset.pressed = "true"; });
